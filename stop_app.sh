@@ -1,9 +1,10 @@
 #!/bin/bash
+# Stops the running Flask server for yt-downloader
+PID=$(ps aux | grep "[f]lask run" | awk '{print $2}')
 
-echo "🛑 Stopping Flask (port 5050)..."
-lsof -ti :5050 | xargs kill -9 2>/dev/null
-
-echo "🛑 Stopping all ngrok sessions..."
-pkill -f "ngrok" 2>/dev/null
-
-echo "✅ All processes stopped."
+if [ -z "$PID" ]; then
+    echo "No running Flask server found."
+else
+    echo "Stopping Flask server with PID $PID"
+    kill -9 $PID
+fi
