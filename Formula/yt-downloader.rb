@@ -1,8 +1,8 @@
 class YtDownloader < Formula
   desc "Simple YouTube downloader with Flask web UI"
   homepage "https://github.com/RAULEZW/youtube-downloader"
-  url "https://github.com/RAULEZW/youtube-downloader/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "6571120e28784a86d6aea59cbcbd0f9ed9c4290509039063660c97535d00aca9"
+  url "https://github.com/RAULEZW/youtube-downloader/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "3b5d3b3574753253283c0113e465359e3f4c7d524ba6c0b650d5c6a745236784"
   license "MIT"
 
   depends_on "python@3.11"
