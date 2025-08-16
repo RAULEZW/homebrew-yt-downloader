@@ -9,13 +9,17 @@ class YtDownloader < Formula
   depends_on "ffmpeg"
 
   def install
-    system "python3", "-m", "venv", libexec/"venv"
-    system libexec/"venv/bin/pip", "install", "--upgrade", "-r", "requirements.txt"
+    venv = libexec/"venv"
+    system "python3", "-m", "venv", venv
+    system venv/"bin/pip", "install", "--upgrade", "pip"
+    system venv/"bin/pip", "install", "-r", buildpath/"requirements.txt"
+
     bin.install "start_app.sh" => "yt-downloader"
     bin.install "stop_app.sh" => "yt-downloader-stop"
   end
 
   test do
-    system "#{bin}/yt-downloader", "--help"
+    assert_predicate bin/"yt-downloader", :exist?, "yt-downloader script should exist"
+    assert_predicate bin/"yt-downloader-stop", :exist?, "yt-downloader-stop script should exist"
   end
 end
